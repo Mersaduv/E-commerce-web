@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Slider from "../components/sliders/Slider";
 
 import { fetchDataProduct } from "../redux/products/actionsProduct";
+import { addCartAction } from "../redux/products/cart/actionAddCart";
 
 const HomePage = () => {
   useEffect(() => {
@@ -12,7 +13,6 @@ const HomePage = () => {
   const products = useSelector((state) => state.products);
   const { data } = products;
 
-  //   console.log(products);
   return (
     <div className="mx-auto container sm:py-8">
       <Slider />
@@ -77,7 +77,10 @@ const HomePage = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex flex-col-reverse sm:flex-row items-center justify-between py-4">
+                  <div
+                    onClick={() => dispatch(addCartAction(product))}
+                    className="flex flex-col-reverse sm:flex-row items-center justify-between py-4"
+                  >
                     <h2 className="text-indigo-700 text-xs font-semibold hidden sm:block">
                       کلیک کن تا سبد خرید اضافه شود
                     </h2>
@@ -135,9 +138,7 @@ const HomePage = () => {
                 </div>
                 <div className=" p-2 py-4">
                   <div className="flex items-center ">
-                    <h2 className=" text-sm  font-semibold">
-                      {product.name}
-                    </h2>
+                    <h2 className=" text-sm  font-semibold">{product.name}</h2>
                   </div>
                   <p className="text-xs text-gray-600 mt-2  hidden ">
                     The Apple iPhone XS is available in 3 colors with 64GB

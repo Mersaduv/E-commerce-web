@@ -11,14 +11,13 @@ import "./styles.css";
 import { Pagination } from "swiper";
 import { useSelector } from "react-redux";
 
-
 export default function Slider() {
   const products = useSelector((state) => state.products);
   const { data } = products;
   const pagination = {
     clickable: true,
-    renderBullet: function (index , className) {
-      return '<span class="' + className + '">' + (index=">") + " </span>";
+    renderBullet: function (index, className) {
+      return '<span class="' + className + '">' + (index = ">") + " </span>";
     },
   };
 

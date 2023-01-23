@@ -2,7 +2,12 @@ import { useState } from "react";
 import Input from "./common/Input";
 import { BiSearch, BiCart } from "react-icons/bi";
 import SelectFilter from "./common/SelectComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const Navigations = () => {
+  const products = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  const { data } = products;
   const [dataValue, setData] = useState("");
   const [filter, setOptions] = useState("");
 
@@ -18,9 +23,12 @@ const Navigations = () => {
           {/* cart / login user first mobile */}
           <div className="flex  sm:hidden">
             <div className="py-3 ">login/signup</div>
+            <Link to="/cart">
             <div className="py-3 text-2xl ">
+              {" "}
               <BiCart />
             </div>
+          </Link>
           </div>
 
           <div>
@@ -40,10 +48,12 @@ const Navigations = () => {
         {/* cart / login user tablet desktop */}
         <div className="gap-x-2 hidden sm:flex items-center">
           <div className="py-4 ">login/signup</div>
-          <div className=" text-3xl ">
-            {" "}
-            <BiCart />
-          </div>
+          <Link to="/cart">
+            <div className=" text-3xl ">
+              {" "}
+              <BiCart />
+            </div>
+          </Link>
         </div>
         {/* first mobile select category  */}
         <div className="flex justify-between gap-x-1 text-xs my-4  text-[#3b76f6] sm:hidden">

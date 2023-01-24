@@ -4,18 +4,28 @@ import { BiSearch, BiCart } from "react-icons/bi";
 import SelectFilter from "./common/SelectComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import CategoryFilter from "./filter/CategoryFilter";
 const Navigations = () => {
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const { data } = products;
   const [dataValue, setData] = useState("");
-  const [filter, setOptions] = useState("");
+  // const [filter, setOptions] = useState("");
+  const options = [
+    { value: "", label: "همه دسته بندی" },
+    { value: "tablet-mobile", label: "تبلت و موبایل" },
+    { value: "pc-laptop", label: "رایانه و لپتاپ" },
+    { value: "clothes", label: "پوشاک" },
+    { value: "home-appliances", label: "لوازم خانگی" },
+  ];
 
-  console.log(filter);
   const handlerChange = (e) => {
     setData(e.target.value);
   };
-
+  const handleCategoryChange = (category) => {
+   
+    // use filteredItems to render the items.
+  };
   return (
     <div className="bg-white w-full mx-auto border-b px-4">
       <nav className="flex sm:items-center flex-col sm:flex-row justify-between relative mx-auto max-w-6xl">
@@ -24,11 +34,11 @@ const Navigations = () => {
           <div className="flex  sm:hidden">
             <div className="py-3 ">login/signup</div>
             <Link to="/cart">
-            <div className="py-3 text-2xl ">
-              {" "}
-              <BiCart />
-            </div>
-          </Link>
+              <div className="py-3 text-2xl ">
+                {" "}
+                <BiCart />
+              </div>
+            </Link>
           </div>
 
           <div>
@@ -36,14 +46,19 @@ const Navigations = () => {
           </div>
         </div>
         {/* search Input  */}
-        <div className="flex border border-[#3b82f6]  rounded-md overflow-hidden sm:w-1/2">
+        <div className="flex border-2 border-[#3b82f6]  rounded-md overflow-hidden sm:w-1/2">
           <button className="sm:hidden text-gray-400 bg-white -ml-2 -mr-1">
             <BiSearch />
           </button>
           <Input handlerChange={handlerChange} dataValue={dataValue} />
           {/*  select category desktop */}
-          <SelectFilter setOptions={setOptions} />
-          <button className="hidden sm:block text-sm">جستجو</button>
+          <CategoryFilter
+            onChange={handleCategoryChange}
+            categories={options}
+          />
+          <button className="hidden sm:block text-xs px-3 bg-[#3b82f6] text-white">
+            جستجو
+          </button>
         </div>
         {/* cart / login user tablet desktop */}
         <div className="gap-x-2 hidden sm:flex items-center">

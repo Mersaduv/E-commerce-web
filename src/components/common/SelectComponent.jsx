@@ -10,10 +10,10 @@ const SelectFilter = ({ setOptions }) => {
   return (
     <select
       onChange={(e) => setOptions(e.target.value)}
-      className="text-xs  cursor-pointer hidden sm:block bluwer"
+      className="text-xs  cursor-pointer hidden sm:block"
     >
       {optionses.map((opt) => (
-        <option key={opt.label} value={opt.value}>
+        <option key={opt.label} value={opt.value}  className="h-12">
           {opt.label}
         </option>
       ))}

@@ -1,7 +1,11 @@
+// import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import QuantitySelector from "../components/common/Selector";
+// import Selector from "../components/common/Selector";
 import {
   addCartAction,
   decrementAction,
+  incrementQuantity,
 } from "../redux/products/cart/actionAddCart";
 
 const CartPage = () => {
@@ -9,14 +13,22 @@ const CartPage = () => {
   const dataCart = useSelector((state) => state.cart);
   const totals = useSelector((state) => state.cart.total);
   const { cart } = dataCart;
+
+  const handleQuantityChange = (quantity,prod) => {
+    // update the cart item with the new quantity
+    dispatch(incrementQuantity(quantity,prod));
+    console.log(quantity);
+    console.log(prod);
+  };
+
   return (
-    <div className="flex gap-4 justify-between flex-col sm:flex-row px-4">
+    <div className="flex gap-4 justify-between  mt-5 flex-col sm:flex-row px-4">
       <div className="flex flex-1 flex-col bg-white ">
         {cart &&
           cart.map((product) => (
             <div
               key={product._id}
-              className="flex border-b py-2 gap-y-4 flex-col sm:flex-row "
+              className="flex border-b p-2 gap-y-4 flex-col sm:flex-row "
             >
               <div className="flex gap-4">
                 <div>
@@ -26,12 +38,11 @@ const CartPage = () => {
                     alt={product.name}
                   />
                 </div>
-                <div className="flex flex-col">
-                  <h1>{product.name}</h1>
+                <div className="flex flex-col flex-1 w-40">
+                  <h1 className="text-sm text-ellipsis whitespace-no-wrap overflow-hidden text-overflow-ellipsis">{product.name}</h1>
                   <div className="flex flex-col mt-0.5 text-gray-400 text-sm">
-                    <span>{product.description[1].support}</span>
-                    <span>
-                      {" "}
+                    <span className="text-xs">{product.description[1].support}</span>
+                    <span className="text-xs">
                       {product.description[2]
                         ? product.description[2].support
                         : " "}
@@ -40,9 +51,19 @@ const CartPage = () => {
                 </div>
               </div>
 
-              <div className="flex justify-between flex-row-reverse ">
-                <h1>تومان : {product.price}</h1>
-                <div className="flex  border w-24 rounded justify-center">
+              <div className="flex justify-between sm:justify-end sm:w-full flex-row-reverse sm:flex-row ">
+                <div className="flex flex-col gap-y-3 ml-1">
+                  <h1 className="text-center">{product.price * product.quantity} تومان</h1>
+
+                  <QuantitySelector prod={product} onChange={handleQuantityChange} />
+                  {/* <Selector
+                    value={selectedOption}
+                    onChange={clickHandler}
+                    options={quantityOption}
+                  /> */}
+                </div>
+                {/* quantity first mobile  */}
+                <div className="flex  border w-24 rounded justify-center sm:hidden">
                   <button
                     onClick={() => dispatch(decrementAction(product))}
                     className="flex justify-center items-center  w-6 h-6"
@@ -77,12 +98,12 @@ export const SummaryCart = ({ cart, total }) => {
     0
   );
   return (
-    <div className="sm:w-48 w-full  px-2.5 py-2 border bg-white">
+    <div className="sm:w-60 w-full  px-2.5 py-2 border bg-white">
       <div className=" my-1 text-sm flex justify-between">
         قیمت کل : <p className="text-gray-500">{orginalPrice}</p>
       </div>
       <div className=" my-1 text-sm flex justify-between">
-        مبلغ تخفیف : <p className="text-red-500">{total - orginalPrice}</p>
+        مبلغ تخفیف : <p className="text-red-500">{orginalPrice - total}</p>
       </div>
       <div className=" my-1 text-sm flex justify-between">
         مالیات افزوده : <p className="text-gray-500">0</p>

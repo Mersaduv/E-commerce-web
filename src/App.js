@@ -17,6 +17,7 @@ function App() {
           <Route path="/header" element={<Header />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/cart" element={<CartPage />} />
+          
         </Routes>
       </Layout>
     </Provider>

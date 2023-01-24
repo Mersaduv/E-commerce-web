@@ -22,6 +22,13 @@ input[type="tel"] {
   color: rgb(171, 170, 170);
   background-color: white;
 }
+option{
+  font-size: small;
+  border-bottom: gray 1px solid ;
+}
+/* .selopt option{
+border: red 2px solid !important;
+} */
 /* button {
   background-color: #3b82f6;
   color: white;

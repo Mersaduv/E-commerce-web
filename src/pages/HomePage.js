@@ -14,7 +14,7 @@ const HomePage = () => {
   const { data } = products;
 
   return (
-    <div className="mx-auto container sm:py-8">
+    <div className="mx-auto container sm:py-5">
       <Slider />
 
       <h1 className=" p-5">همه محصولات :</h1>
@@ -110,7 +110,7 @@ const HomePage = () => {
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-36 sm:h-44"
+                  className="w-full h-24 sm:h-24"
                 />
               </div>
               <div className="bg-white">

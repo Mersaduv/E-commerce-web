@@ -1,4 +1,5 @@
 import {
+  CATEGORY_FILTER,
   FETCH_FAILER_DATA,
   FETCH_PRODUCTS_DATA,
   FETCH_SUCCESS_DATA,
@@ -10,8 +11,7 @@ function fetchProduct() {
 }
 
 function fetchSuccessData(data) {
-  return { type: FETCH_SUCCESS_DATA, payload: data }  
- 
+  return { type: FETCH_SUCCESS_DATA, payload: data };
 }
 
 function fetchFailerData(error) {
@@ -29,4 +29,7 @@ export const fetchDataProduct = () => {
       dispatch(fetchFailerData(error.message));
     }
   };
+};
+export const categoryFiterAction = (product) => {
+  return { type: CATEGORY_FILTER, payload: product };
 };

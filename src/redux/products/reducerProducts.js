@@ -1,6 +1,4 @@
-
 import {
-  CATEGORY_FILTER,
   FETCH_FAILER_DATA,
   FETCH_PRODUCTS_DATA,
   FETCH_SUCCESS_DATA,
@@ -22,12 +20,6 @@ const useReducer = (state = initailState, action) => {
     }
     case FETCH_FAILER_DATA: {
       return { loading: false, error: action.payload, data: [] };
-    }
-    case CATEGORY_FILTER: {
-      // It won't muted, but I got a copy to make sure
-      // const products = [...state.cart];
-
-      return;
     }
     default:
       return state;

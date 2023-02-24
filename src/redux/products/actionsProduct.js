@@ -1,5 +1,4 @@
 import {
-  CATEGORY_FILTER,
   FETCH_FAILER_DATA,
   FETCH_PRODUCTS_DATA,
   FETCH_SUCCESS_DATA,
@@ -24,12 +23,11 @@ export const fetchDataProduct = () => {
 
     try {
       const { data } = await getAllProducts();
-      dispatch(fetchSuccessData(data));
+     
+        dispatch(fetchSuccessData(data));
+     
     } catch (error) {
       dispatch(fetchFailerData(error.message));
     }
   };
-};
-export const categoryFiterAction = (product) => {
-  return { type: CATEGORY_FILTER, payload: product };
 };

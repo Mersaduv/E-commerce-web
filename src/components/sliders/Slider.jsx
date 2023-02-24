@@ -10,10 +10,20 @@ import "./styles.css";
 // import required modules
 import { Pagination } from "swiper";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function Slider() {
   const products = useSelector((state) => state.products);
+  const [dataSwiper, setDataCateGory] = useState();
   const { data } = products;
+  useEffect(() => {
+    if (data) {
+      const dataCategory = data.filter((item) => item.category === "clothes");
+      setDataCateGory(dataCategory);
+    }
+  }, [data]);
+
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
@@ -22,31 +32,22 @@ export default function Slider() {
   };
 
   return (
-    <div dir="ltr" className="h-44 bg-white w-full sm:w-2/3 mx-auto ">
+    <div dir="ltr">
       <Swiper
         pagination={pagination}
         modules={[Pagination]}
         className="mySwiper"
       >
-        {data &&
-          data.map((product) => (
+        {dataSwiper &&
+          dataSwiper.map((product) => (
             <SwiperSlide key={product._id}>
               <img
-                className="w-full h-44"
+                className="max-h-44 sm:max-h-[360px]"
                 src={product.image}
                 alt={product.name}
               />
             </SwiperSlide>
           ))}
-
-        {/* <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide> */}
       </Swiper>
     </div>
   );

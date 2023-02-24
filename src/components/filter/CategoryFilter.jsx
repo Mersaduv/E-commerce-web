@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const CategoryFilter = ({ onChange, categories }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
-
+// console.log(selectedCategory);
   return (
     <select className="w-20 sm:24 hidden sm:block h-auto text-gray-500 px-1 py-1 rounded-md border" value={selectedCategory} onChange={(e) => {
       setSelectedCategory(e.target.value);

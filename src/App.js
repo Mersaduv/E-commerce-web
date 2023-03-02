@@ -15,8 +15,8 @@ import AuthProvider from "./context/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import Profile from "./pages/Profile";
 import DetailPage from "./pages/DetailPage";
-import ElectronicsGadgets from "./pages/ElectronicsGadgets";
-import HomeAppliances from "./pages/HomeAppliances";
+import CategoryPage from "./pages/CategoryPage";
+import SearchResults from "./pages/SearchResults";
 function App() {
   return (
     <Provider store={store}>
@@ -33,11 +33,12 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/account" element={<Profile />} />
             <Route path="/product/:id" element={<DetailPage />} />
-            <Route
-              path="/electronics-Gadgets"
-              element={<ElectronicsGadgets />}
-            />
-            <Route path="/home-appliances" element={<HomeAppliances />} />
+
+            <Route path="/search/*" element={<SearchResults />}>
+              <Route path=":categorySlug" element={<CategoryPage />} />
+            </Route>
+
+            {/* <Route path="/category/:categorySlug" element={<CategoryPage />} /> */}
           </Routes>
         </Layout>
       </AuthProvider>

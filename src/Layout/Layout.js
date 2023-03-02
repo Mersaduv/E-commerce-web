@@ -3,7 +3,7 @@ import Header from "../components/Header";
 
 const Layout = ({ children }) => {
   return (
-    <div className="  bg-gray-100 ">
+    <div className=" bg-gray-100 ">
       <Header />
       {children}
       <Footer />

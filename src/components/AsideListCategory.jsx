@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Checkbox } from "@material-tailwind/react";
+// import { Checkbox } from "@material-tailwind/react";
 import { BiChevronUp } from "react-icons/bi";
 import PriceRangeSlider from "../components/PriceRangeSlider";
+
 import Rate from "./Rate";
 const AsideListCategory = () => {
   // State for brands
@@ -62,8 +63,8 @@ const AsideListCategory = () => {
   };
 
   return (
-    <div className="container  px-2 my-8 w-full">
-      <div className="w-full max-w-lg gap-y-4">
+    <div className="z-10 pb-10 px-2  w-full">
+      <div className="w-full  gap-y-4">
         <hr className="border" />
         {/* Section 1: Categories */}
         <div className="my-4  ">
@@ -85,16 +86,16 @@ const AsideListCategory = () => {
               <div className=" py-1 pr-1 cursor-pointer rounded hover:font-semibold w-52 hover:bg-[#E5F1FF]">
                 رایانه رومیزی
               </div>
-              <div className=" py-1 pr-1 cursor-pointer rounded hover:font-semibold w-52 hover:bg-[#E5F1FF]">
+              <div className="line-through py-1 pr-1 cursor-pointer rounded hover:font-semibold w-52 ">
                 لوازم تعمیری
               </div>
-              <div className=" py-1 pr-1 cursor-pointer rounded hover:font-semibold w-52 hover:bg-[#E5F1FF]">
+              <div className="line-through py-1 pr-1 cursor-pointer rounded hover:font-semibold w-52 ">
                 ورزشی
               </div>
-              <div className=" py-1 pr-1 cursor-pointer rounded hover:font-semibold w-52 hover:bg-[#E5F1FF]">
+              <div className="line-through py-1 pr-1 cursor-pointer rounded hover:font-semibold w-52 ">
                 لوازم مکانیکی
               </div>
-              <div className=" py-1 pr-1 cursor-pointer rounded hover:font-semibold w-52 hover:bg-[#E5F1FF]">
+              <div className="line-through py-1 pr-1 cursor-pointer rounded hover:font-semibold w-52 ">
                 ادامه دسته بندی....
               </div>
             </div>
@@ -298,7 +299,7 @@ const AsideListCategory = () => {
         </div>
       </div>
       {/*meterial tailwind  */}
-      <div className="max-w-md mx-auto">
+      {/* <div className="max-w-md mx-auto">
         <div className="my-4">
           <h2 className="  text-lg font-semibold w-52 mb-2">Category</h2>
         </div>
@@ -386,7 +387,7 @@ const AsideListCategory = () => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

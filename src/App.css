@@ -10,16 +10,31 @@
 /* input[type="checkbox"]:checked + .checkbox-label::before {
   background-color: #2196f3;
 } */
-input[type="text"]:focus {
+/* input[type="text"]::after {
   outline: none;
   outline-offset: none;
-}
-input[type="checkbox"] , label {
+  border: white;
+
+} */
+input[type="checkbox"],
+label {
   cursor: pointer;
 }
-input[type="radio"] , label {
- border-radius: 50%;
+input[type="radio"],
+label {
+  border-radius: 50%;
 }
+select{
+  
+  appearance: none;
+  -webkit-appearance: none; /* For Safari */
+  background-image: url(./image/R.png);
+  background-repeat: no-repeat;
+  background-size: 14px;
+  /* background-position: right center; */
+  padding: 20px; /* To make space for the arrow */
+}
+
 /* .price-range-sidebar {
   padding: 1rem;
 
@@ -62,4 +77,7 @@ input[type="range"]::-webkit-slider-thumb {
 output {
   font-size: 0.8rem;
 }
-
+.customiz-shadow {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}

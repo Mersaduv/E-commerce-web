@@ -45,7 +45,7 @@ const CountryDropdown = () => {
   // }, []);
 
   return (
-    <div className="relative">
+    <div className="relative -ml-4 w-40 cursor-pointer">
       {selectedCountry && (
         <div
           className="flex items-center px-3 py-2 rounded-md border-gray-300"
@@ -64,7 +64,7 @@ const CountryDropdown = () => {
         </div>
       )}
       {isOpen && (
-        <div className="absolute text-sm  z-10 mt-1 w-full bg-white shadow-lg max-h-44 overflow-y-auto overflow-x-hidden">
+        <div className="absolute text-sm  z-10 mt-1 w-40 bg-white shadow-lg max-h-44 overflow-y-auto overflow-x-hidden">
           {countries.map((country) => (
             <div
               key={country.alpha2Code}

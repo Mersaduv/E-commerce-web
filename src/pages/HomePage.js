@@ -5,17 +5,15 @@ import Slider from "../components/sliders/Slider";
 import image from "../image/images.png";
 import homeOutdoor from "../image/canape.jpg";
 import electronicGadgetImage from "../image/electronicsG.jpg";
-
+// import { Client, storefrontAccessToken } from "@shopify/buy-sdk";
 import { fetchDataProduct } from "../redux/products/actionsProduct";
 import { addCartAction } from "../redux/products/cart/actionAddCart";
 import { GiAutoRepair, GiClothes } from "react-icons/gi";
-
 import { MdHomeRepairService, MdMoreVert } from "react-icons/md";
 import { BiCar, BiHomeSmile, BiArrowBack } from "react-icons/bi";
 import { FcSportsMode } from "react-icons/fc";
 import { HiComputerDesktop } from "react-icons/hi2";
 import { useAuthState } from "../context/AuthProvider";
-import AsideListCategory from "../components/AsideListCategory";
 const HomePage = () => {
   const authUser = useAuthState();
   console.log(authUser);
@@ -28,6 +26,10 @@ const HomePage = () => {
   const query = useSelector((state) => state.categorys.query);
   useEffect(() => {
     dispatch(fetchDataProduct());
+    // const client = Client.buildClient({
+    //   domain: "ffd59c.myshopify.com",
+    //   storefrontAccessToken: "6bae6efd7a09c20959446bd5e8522eb2",
+    // });
   }, [dispatch]);
 
   const filteredProducts =
@@ -303,7 +305,7 @@ const HomePage = () => {
         {/* row 2  */}
         <div className="flex mt-6 flex-col-reverse sm:flex-row sm:justify-between  bg-white">
           {/* img  */}
-          <Link to="/home-appliances">
+          <Link to="/electronics-Gadgets">
             <div
               className="bg-cover hidden sm:block  p-3 bg-center  md:w-52 lg:w-[300px] h-[247px]"
               style={{ backgroundImage: `url(${electronicGadgetImage})` }}

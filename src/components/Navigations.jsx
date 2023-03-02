@@ -14,27 +14,18 @@ const Navigations = () => {
   const [isOpen, setIsOpen] = useState(false);
   const authUser = useAuthState();
   const carts = useSelector((state) => state.cart);
-  const categories = useSelector((state) => state.categorys.categories);
-  const selectedCategory = useSelector(
-    (state) => state.categorys.selectedCategory
-  );
-  const products = useSelector((state) => state.products);
-  // const categories = useSelector((state) => state.categories);
-  // const { categories, selectedCategory, data } = products;
-
+// const categories = useSelector((state) => state.categorys.categories);
+// const selectedCategory = useSelector(
+//   (state) => state.categorys.selectedCategory
+// );
+// const handleSelectCategory = (event) => {
+//   const selectedCategory = event.target.value;
+//   dispatch(selectCategory(selectedCategory));
+//   console.log(selectedCategory);
+// };
   const dispatch = useDispatch();
 
-  // const selectedCategory = useSelector((state) => state.selectedCategory);
-  // ---------- react select -------------
-
-  console.log(categories, selectedCategory);
-
-  const handleSelectCategory = (event) => {
-    const selectedCategory = event.target.value;
-    dispatch(selectCategory(selectedCategory));
-    console.log(selectedCategory);
-  };
-
+  const products = useSelector((state) => state.products);
   return (
     <div className=" flex flex-col px-2  border-b max-w-6xl mx-auto">
       <div className="flex sm:items-center flex-col sm:flex-row justify-between">
@@ -72,32 +63,20 @@ const Navigations = () => {
           </div>
         </div>
         {/* search Input  */}
-        <div className="flex border-2 relative border-[#2377ff] h-10  bg-white  rounded-md  sm:w-1/2">
-          <button className="sm:hidden text-gray-400   mr-1 ">
-            <BiSearch />
-          </button>
-          <InputSearch />
-          {/* select category desktop */}
-          <select
-            className="hidden sm:block text-sm w-24
-           "
-            value={selectedCategory}
-            onChange={handleSelectCategory}
-          >
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-
-          <button
-            className="hidden sm:block
-           text-xs px-3 bg-[#2377ff]  text-white"
-          >
-            جستجو
-          </button>
-        </div>
+        <InputSearch />
+      {/* <select
+        dir="ltr"
+        className="hidden p-1  sm:block text-sm w-24
+      "
+        value={selectedCategory}
+        onChange={handleSelectCategory}
+      >
+        {categories.map((category) => (
+          <option key={category} value={category}>
+            {category}
+          </option>
+        ))}
+      </select> */}
         {/* cart / login user tablet desktop */}
         <div className="gap-x-2 hidden sm:flex items-center">
           <Link to="/cart">
@@ -176,7 +155,7 @@ const Navigations = () => {
 
       {/* desktop list caregory  */}
       <div className="flex justify-between border-t">
-        <div className="hidden    w-full  sm:text-sm md:text-base font-semibold text-base sm:flex items-center">
+        <div className="hidden  whitespace-nowrap   w-full  sm:text-sm md:text-base font-semibold text-base sm:flex items-center">
           <div className="p-2 border-b-2 border-[#2377ff]  border-opacity-0 hover:border-opacity-100 hover:text-[#2377ff]  duration-200 cursor-pointer active">
             <a href="http://">همه رویدادها</a>
           </div>
@@ -229,7 +208,7 @@ const Navigations = () => {
         </div>
         {/* language / currency / country */}
         <div className="ml-6 hidden sm:flex  items-center   ">
-          <LanguageDropdown />
+          <LanguageDropdown  />
           <CountryDropdown />
         </div>
       </div>

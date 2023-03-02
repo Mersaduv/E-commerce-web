@@ -20,6 +20,7 @@ const validationSchema = Yup.object({
 const Login = () => {
   const Navigates = useNavigate();
   let location = useLocation();
+  console.log(location);
   const query = queryString.parse(location.search);
   const redirect = query.redirect || "/";
   console.log(redirect);

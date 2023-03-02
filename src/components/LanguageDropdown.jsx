@@ -53,17 +53,17 @@ const LanguageDropdown = () => {
   //   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative   w-28 cursor-pointer">
       {selectedLanguage && (
         <div
-          className="flex items-center px-3 py-2 rounded-md border-gray-300"
+          className="flex items-center  pr-3 py-2 rounded-md border-gray-300"
           onClick={toggleDropdown}
           ref={dropdownRef}
         >
           <div className="overflow-ellipsis whitespace-nowrap">
             {selectedLanguage.name}
           </div>
-          <span className="text-2xl text-gray-500">
+          <span className="text-xl text-gray-500">
             <BiChevronDown />
           </span>
         </div>

@@ -1,0 +1,23 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules
+
+# Intermediate files
+.tmp
+types.js
+optimized-types.js
+
+# Build artifacts
+index.*
+!docs/index.html
+
+# Decrypted secrets
+secrets.json
+.nvmrc
+
+# VSCode settings
+.vscode
